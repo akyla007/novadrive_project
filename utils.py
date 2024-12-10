@@ -62,12 +62,12 @@ def save_scalers(df: pd.DataFrame, name_columns) -> pd.DataFrame:
     for name_column in  name_columns:
         scaler = StandardScaler()
         df[name_column] = scaler.fit_transform(df[[name_column]])
-        joblib.dump(scaler, f'./data/silver/scaler_{name_column}.joblib')
+        joblib.dump(scaler, f'./models/scaler_{name_column}.joblib')
     return df
 
 def save_encoders(df: pd.DataFrame, name_columns) -> pd.DataFrame:
     for name_column in  name_columns:
         encoder = LabelEncoder()
         df[name_column] = encoder.fit_transform(df[name_column])
-        joblib.dump(encoder, f'./data/silver/encoder_{name_column}.joblib')
+        joblib.dump(encoder, f'./models/encoder_{name_column}.joblib')
     return df
